@@ -1,0 +1,25 @@
+.Posts {
+    border: 1px solid green;
+    padding: 15px;
+}
+
+.Posts button {
+    background: aquamarine;
+    border: none;
+    border-radius: 15px;
+    outline: none;
+    cursor: pointer;
+    padding: 15px 20px;
+}
+
+.Posts h3 {
+    font-size: 1.5rem;
+}
+
+.Posts button:hover {
+    background: #40e3af;
+}
+
+.Posts textarea {
+    margin-right: 15px;
+}

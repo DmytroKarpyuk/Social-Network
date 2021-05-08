@@ -1,0 +1,6 @@
+.App {
+    display: grid;
+    grid-template-areas: "Header Header" "Sidebar Content";
+    grid-template-rows: 60px 1fr;
+    grid-template-columns: 2fr 10fr;
+}

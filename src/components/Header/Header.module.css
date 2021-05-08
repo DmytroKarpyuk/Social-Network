@@ -1,0 +1,30 @@
+.Header {
+    background: #364249;
+    min-height: 55px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 15px;
+    color: white;
+    grid-area: Header;
+}
+
+.Header img {
+    width: 50px;
+    margin-right: 10px;
+}
+
+.Header a {
+    color: white;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.Header a:hover {
+    color: #a3b3bd;
+}
+
+.login_block {
+    position: absolute;
+    right: 15px;
+}

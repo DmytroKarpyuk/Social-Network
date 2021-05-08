@@ -1,0 +1,12 @@
+.user_photo {
+    height: 80px;
+    width: 80px;
+    border-radius: 50px;
+    margin-right: 15px;
+    object-fit: cover;
+}
+
+.page_active {
+    font-weight: bold;
+    color: #e56800;
+}

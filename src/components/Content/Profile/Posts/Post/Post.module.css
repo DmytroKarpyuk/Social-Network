@@ -1,0 +1,29 @@
+.Post {
+    padding: 15px;
+    margin-top: 15px;
+    background: #596574;
+    border-radius: 20px;
+    color: wheat;
+    align-items: center;
+    position: relative;
+}
+
+.Post img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    border: 1px solid wheat;
+    margin-right: 15px;
+    object-fit: cover;
+}
+
+.content {
+    display: flex;
+}
+
+.like {
+    position: absolute;
+    right: 15px;
+    bottom: 10px;
+    cursor: pointer;
+}
