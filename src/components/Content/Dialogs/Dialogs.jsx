@@ -1,7 +1,7 @@
 import React from 'react';
 import Dialog from "./Dialog/Dialog";
 import Message from "./Message/Message";
-import classes from './Dialogs.module.css';
+import styles from './Dialogs.module.css';
 import DialogForm from "./DialogForm";
 
 const Dialogs = (props) => {
@@ -14,11 +14,11 @@ const Dialogs = (props) => {
     };
 
     return (
-        <div className={classes.Dialogs}>
-            <div className={classes.dialogs_list}>
+        <div className={styles.Dialogs}>
+            <div className={styles.dialogs_list}>
                 {dialogsElements}
             </div>
-            <div className={classes.messages}>
+            <div className={styles.messages}>
                 <div>{messagesElements}</div>
                 <div>
                     <DialogForm addNewMessage={addNewMessage}/>
