@@ -1,16 +1,22 @@
 import React from 'react';
 import styles from './Header.module.css';
 import {NavLink} from "react-router-dom";
+import logo from '../../assets/images/logo192.png';
 
-const Header = (props) => {
+const appName = 'Ideas Network';
+
+const Header = props => {
     return (
         <header className={styles.Header}>
             <NavLink to='/home'>
-                <img src='https://upload.wikimedia.org/wikipedia/commons/a/ab/Android_O_Preview_Logo.png' alt='...'/>
+                <img src={logo} alt='...'/>
             </NavLink>
-            <p>Social Network</p>
+            <p>{appName.toUpperCase()}</p>
             <div className={styles.login_block}>
-                {props.isAuth ? props.login : <NavLink to='/login'>Login</NavLink>}
+                {props.isAuth
+                    ? <div>{props.login.toUpperCase()}<button onClick={props.logOutUser}>Log Out</button></div>
+                    : <NavLink to='/login'>Login</NavLink>
+                }
             </div>
         </header>
     )

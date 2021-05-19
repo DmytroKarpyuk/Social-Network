@@ -1,6 +1,6 @@
 .Sidebar {
     grid-area: Sidebar;
-    background: sandybrown;
+    background: #303234;
     padding: 15px;
 }
 
@@ -8,13 +8,15 @@
     color: white;
     text-decoration: none;
     font-size: 1.5rem;
+    transition: .2s;
 }
 
 .Sidebar a:hover {
-    color: #a15127;
+    color: #e0c884;
 }
 
 .Sidebar a.active {
-    color: #024071;
+    color: #dcb346;
     font-weight: bold;
+    padding: 0 10px;
 }

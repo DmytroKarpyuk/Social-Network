@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './Posts.module.css';
+import styles from './Posts.module.css';
 import Post from "./Post/Post";
 import NewPostForm from "./NewPostForm";
 
@@ -12,10 +12,12 @@ const Posts = (props) => {
     };
 
     return (
-        <div className={classes.Posts}>
-            <h3>My posts</h3>
+        <div className={styles.Posts}>
             <NewPostForm addNewPost={addNewPost}/>
-            {postsElements}
+            <div className={styles.posts_list}>
+                <h2>My ideas</h2>
+                {postsElements}
+            </div>
         </div>
     )
 };

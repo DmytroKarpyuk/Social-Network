@@ -1,3 +1,10 @@
+.profile_info {
+    padding: 15px;
+    background: #fae7c0;
+    border: 3px solid orange;
+    border-top: none;
+}
+
 .profile_img {
     height: 150px;
     width: 150px;

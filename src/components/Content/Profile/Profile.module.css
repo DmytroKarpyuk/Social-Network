@@ -1,0 +1,6 @@
+.Profile {
+    display: grid;
+    grid-template-areas: 'ProfileInfo Following' 'PostsContainer';
+    grid-template-rows: 1fr;
+    grid-template-columns: 6fr 6fr;
+}

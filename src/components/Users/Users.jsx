@@ -11,20 +11,11 @@ const Users = (props) => {
     }
 
     return (
-        <div>
-            <div>
-                {pages.map(p => {
-                    return (
-                        <button className={props.currentPage === p && styles.page_active} onClick={() => {
-                            props.onPageChanged(p)
-                        }}>{p}</button>
-                    )
-                })}
-            </div>
+        <div className={styles.Users}>
             {
                 props.users.map(u => {
                     return (
-                        <div key={u.id}>
+                        <div key={u.id} className={styles.user}>
                             <span>
                                 <div>
                                     <NavLink to={`/profile/` + u.id}>
@@ -59,6 +50,15 @@ const Users = (props) => {
                     )
                 })
             }
+            <div>
+                {pages.map(p => {
+                    return (
+                        <button className={props.currentPage === p && styles.page_active} onClick={() => {
+                            props.onPageChanged(p)
+                        }}>{p}</button>
+                    )
+                })}
+            </div>
         </div>
     )
 }

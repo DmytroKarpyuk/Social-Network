@@ -1,28 +1,33 @@
-import {Field, Form, Formik} from "formik";
+import {Form, Formik} from 'formik';
 import React from 'react';
-
-const onSubmitLogin = (values, actions) => {
-    console.log(values);
-    // setTimeout(() => {
-    //     alert(JSON.stringify(values, null, 2));
-    //     actions.setSubmitting(false);
-    // }, 1000);
-};
+import * as Yup from "yup";
+import FieldElement from '../common/Fields/FieldElement';
+import styles from './LoginForm.module.css';
 
 export const LoginForm = props => {
+    const validate = Yup.object({
+        email: Yup.string()
+            .email('Invalid email')
+            .required('Required'),
+        password: Yup.string()
+            .min(2, 'Too Short!')
+            .max(20, 'Too Long!')
+            .required('Required'),
+    });
     return (
-        <Formik initialValues={{login: '', password: '', rememberMe: false}} onSubmit={onSubmitLogin}>
-            <Form>
+        <Formik initialValues={{email: '', password: '', rememberMe: false}} onSubmit={props.onSubmitLogin} validationSchema={validate}>
+            <Form className={styles.LoginForm}>
                 <div>
-                    <Field placeholder='Login' name='login' component='input'/>
+                    <FieldElement name='email' placeholder='Email' component='input'/>
                 </div>
                 <div>
-                    <Field placeholder='Password' name='password' component='input'/>
+                    <FieldElement name='password' placeholder='Password' component='input' type='password'/>
                 </div>
                 <div>
-                    <Field type='checkbox' name='rememberMe' component='input'/>
+                    <FieldElement name='rememberMe' component='input' type='checkbox'/>
                     Remember me
                 </div>
+                {props.errors.length > 0 ? props.errors.map(e => <div className={styles.error}>{e}</div>) : null}
                 <button type='submit'>Submit</button>
             </Form>
         </Formik>

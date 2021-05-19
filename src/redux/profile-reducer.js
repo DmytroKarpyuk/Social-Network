@@ -10,7 +10,7 @@ let initialState = {
     posts: [
         {id: 1, postText: 'This is my first post!', likesCount: 36},
         {id: 2, postText: 'Another post', likesCount: 68},
-        {id: 3, postText: 'How are you guys?', likesCount: 26}
+        {id: 3, postText: 'I have an idea', likesCount: 26}
     ]
 };
 

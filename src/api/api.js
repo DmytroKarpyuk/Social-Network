@@ -7,20 +7,26 @@ const instance = axios.create({
 });
 
 export const authAPI = {
-    loginMe() {
+    getMe() {
         return instance.get('auth/me');
+    },
+    logIn(email, password, rememberMe = false) {
+        return instance.post('auth/login', {email, password, rememberMe});
+    },
+    logOut() {
+        return instance.delete('auth/login');
     }
 };
 
 export const profileAPI = {
-    getProfile(userId = 16454) {
+    getProfile(userId) {
         return instance.get('profile/' + userId).then(response => response.data);
     },
-    getStatus(userId = 16454) {
+    getStatus(userId) {
         return instance.get('profile/status/' + userId).then(response => response.data);
     },
     updateStatus(status) {
-        return instance.put('profile/status',  {status}).then(response => response.data);
+        return instance.put('profile/status', {status}).then(response => response.data);
     }
 };
 

@@ -5,7 +5,7 @@ import DialogsContainer from "./Dialogs/DialogsContainer";
 import UsersContainer from "../Users/UsersContainer";
 import News from "./News/News";
 import Settings from "./Settings/Settings";
-import Login from "../Login/Login";
+import LoginContainer from "../Login/LoginContainer";
 import classes from './Content.module.css';
 import {Route} from "react-router-dom";
 
@@ -18,7 +18,7 @@ const Content = () => {
             <Route path='/users' render={() => <UsersContainer/>}/>
             <Route path='/news' render={() => <News/>}/>
             <Route path='/settings' render={() => <Settings/>}/>
-            <Route path='/login' render={() => <Login/>}/>
+            <Route path='/login' render={() => <LoginContainer/>}/>
         </div>
     )
 }

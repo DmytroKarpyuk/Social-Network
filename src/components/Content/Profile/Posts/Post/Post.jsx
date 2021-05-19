@@ -1,14 +1,15 @@
 import React from 'react';
-import classes from './Post.module.css';
+import styles from './Post.module.css';
+import lampImg from '../../../../../assets/images/lamp.png';
 
 const Post = (props) => {
     return (
-        <div className={classes.Post}>
-            <div className={classes.content}>
-                <img src='https://cdn.iconscout.com/icon/free/png-512/avatar-370-456322.png' alt='...'/>
+        <div className={styles.Post}>
+            <div className={styles.content}>
+                <img src={lampImg} alt='...'/>
                 <p>{props.postText}</p>
             </div>
-            <span className={classes.like}>👍 {props.likesCount}</span>
+            <span className={styles.like}>👍 {props.likesCount}</span>
         </div>
 
     )

@@ -1,3 +1,11 @@
+.Users {
+    padding: 15px;
+}
+
+.user {
+    margin-bottom: 20px;
+}
+
 .user_photo {
     height: 80px;
     width: 80px;
