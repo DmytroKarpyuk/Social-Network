@@ -1,4 +1,4 @@
-import {authAPI} from "../api/api";
+import { authAPI } from "../api/api";
 
 const SET_USER_DATA = 'SET_USER_DATA';
 const SET_ERRORS = 'SET_ERRORS';
@@ -28,14 +28,14 @@ const authReducer = (state = initialState, action) => {
     }
 };
 
-export const setAuthUserData = (userId, login, email, isAuth) => ({type: SET_USER_DATA, payload: {userId, login, email, isAuth}});
-export const setErrors = (errors) => ({type: SET_ERRORS, errors});
+export const setAuthUserData = (userId, login, email, isAuth) => ({ type: SET_USER_DATA, payload: { userId, login, email, isAuth } });
+export const setErrors = (errors) => ({ type: SET_ERRORS, errors });
 
 // Thunk creators
 export const getAuthUserData = () => (dispatch) => {
-    authAPI.getMe().then(response => {
+    return authAPI.getMe().then(response => {
         if (response.data.resultCode === 0) {
-            let {userId, login, email} = response.data.data;
+            let { userId, login, email } = response.data.data;
             dispatch(setAuthUserData(userId, login, email, true));
         }
     });
