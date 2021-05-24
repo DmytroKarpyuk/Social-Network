@@ -2,17 +2,18 @@ import {connect} from "react-redux";
 import React from "react";
 import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
-import {setCurrentPage, follow, unFollow, toggleIsFollowingProgress, getUsers} from "../../redux/users-reducer";
+import {setCurrentPage, follow, unFollow, toggleIsFollowingProgress, requestUsers} from "../../redux/reducers/users-reducer";
 import {compose} from "redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {getCurrentPage, getIsFetching, getIsFollowingInProgress, getPageSize, getTotalUsersCount, getUsers} from "../../redux/selectors/users-selectors";
 
 class UsersContainer extends React.Component {
     componentDidMount() {
-        this.props.getUsers(this.props.currentPage, this.props.pageSize); // thunk
+        this.props.requestUsers(this.props.currentPage, this.props.pageSize); // thunk
     };
 
     onPageChanged = (pageNumber) => {
-        this.props.getUsers(pageNumber, this.props.pageSize); // thunk
+        this.props.requestUsers(pageNumber, this.props.pageSize); // thunk
     };
 
     render() {
@@ -36,16 +37,17 @@ class UsersContainer extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        users: state.usersPage.users,
-        pageSize: state.usersPage.pageSize,
-        totalUsersCount: state.usersPage.totalUsersCount,
-        currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching,
-        isFollowingInProgress: state.usersPage.isFollowingInProgress
+        // Selectors
+        users: getUsers(state),
+        pageSize: getPageSize(state),
+        totalUsersCount: getTotalUsersCount(state),
+        currentPage: getCurrentPage(state),
+        isFetching: getIsFetching(state),
+        isFollowingInProgress: getIsFollowingInProgress(state)
     };
 }
 
 export default compose(
-    connect(mapStateToProps, {setCurrentPage, toggleIsFollowingProgress, getUsers, follow, unFollow}),
+    connect(mapStateToProps, {setCurrentPage, toggleIsFollowingProgress, requestUsers, follow, unFollow}),
     withAuthRedirect
 )(UsersContainer);

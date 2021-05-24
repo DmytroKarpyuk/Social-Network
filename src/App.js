@@ -4,7 +4,7 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import Content from "./components/Content/Content";
 import './App.css';
 import { connect } from "react-redux";
-import { initializeApp } from "./redux/app-reducer";
+import { initializeApp } from "./redux/reducers/app-reducer";
 import { compose } from "redux";
 import Preloader from "./components/common/Preloader/Preloader";
 

@@ -6,12 +6,12 @@ import UsersContainer from "../Users/UsersContainer";
 import News from "./News/News";
 import Settings from "./Settings/Settings";
 import LoginContainer from "../Login/LoginContainer";
-import classes from './Content.module.css';
+import styles from './Content.module.css';
 import {Route} from "react-router-dom";
 
 const Content = () => {
     return (
-        <div className={classes.Content}>
+        <div className={styles.Content}>
             <Route path='/home' render={() => <Home/>}/>
             <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
             <Route path='/dialogs' render={() => <DialogsContainer/>}/>

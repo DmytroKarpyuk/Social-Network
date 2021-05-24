@@ -1,4 +1,4 @@
-import { authAPI } from "../api/api";
+import { authAPI } from "../../api/api";
 
 const SET_USER_DATA = 'SET_USER_DATA';
 const SET_ERRORS = 'SET_ERRORS';
@@ -35,8 +35,8 @@ export const setErrors = (errors) => ({ type: SET_ERRORS, errors });
 export const getAuthUserData = () => (dispatch) => {
     return authAPI.getMe().then(response => {
         if (response.data.resultCode === 0) {
-            let { userId, login, email } = response.data.data;
-            dispatch(setAuthUserData(userId, login, email, true));
+            let { id, login, email } = response.data.data;
+            dispatch(setAuthUserData(id, login, email, true));
         }
     });
 };

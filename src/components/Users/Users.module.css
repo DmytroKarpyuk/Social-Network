@@ -14,7 +14,28 @@
     object-fit: cover;
 }
 
+.follow_btn {
+    background: #e5cd84 !important;
+    color: #000000 !important;
+    border: none !important;
+}
+
+.follow_btn:hover {
+    background: #faba17 !important;
+    color: #000000 !important;
+}
+
+.Users button {
+    background: transparent;
+    border: 1px solid #c1c1c1;
+}
+
+.Users button:hover {
+    background: #afafaf;
+}
+
 .page_active {
+    background: #afafaf !important;
     font-weight: bold;
-    color: #e56800;
+    color: #ffffff;
 }
