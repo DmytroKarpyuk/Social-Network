@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import FieldElement from '../common/Fields/FieldElement';
 import styles from './LoginForm.module.css';
 
-export const LoginForm = props => {
+export const LoginForm = ({onSubmitLogin, errors}) => {
     const validate = Yup.object({
         email: Yup.string()
             .email('Invalid email')
@@ -15,7 +15,7 @@ export const LoginForm = props => {
             .required('Required'),
     });
     return (
-        <Formik initialValues={{email: '', password: '', rememberMe: false}} onSubmit={props.onSubmitLogin} validationSchema={validate}>
+        <Formik initialValues={{email: '', password: '', rememberMe: false}} onSubmit={onSubmitLogin} validationSchema={validate}>
             <Form className={styles.LoginForm}>
                 <div>
                     <FieldElement name='email' placeholder='Email' component='input'/>
@@ -27,7 +27,7 @@ export const LoginForm = props => {
                     <FieldElement name='rememberMe' component='input' type='checkbox'/>
                     Remember me
                 </div>
-                {props.errors.length > 0 ? props.errors.map(e => <div className={styles.error}>{e}</div>) : null}
+                {errors.length > 0 ? errors.map(e => <div className={styles.error}>{e}</div>) : null}
                 <button type='submit'>Submit</button>
             </Form>
         </Formik>

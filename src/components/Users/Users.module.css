@@ -33,9 +33,3 @@
 .Users button:hover {
     background: #afafaf;
 }
-
-.page_active {
-    background: #afafaf !important;
-    font-weight: bold;
-    color: #ffffff;
-}

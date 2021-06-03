@@ -1,10 +1,9 @@
 import {profileAPI} from "../../api/api";
-import {act} from "@testing-library/react";
 
-const ADD_POST = 'ADD_POST';
-const DELETE_POST = 'DELETE_POST';
-const SET_USER_PROFILE = 'SET_USER_PROFILE';
-const SET_STATUS = 'SET_STATUS';
+const ADD_POST = 'ideas-network/profile/ADD_POST';
+const DELETE_POST = 'ideas-network/profile/DELETE_POST';
+const SET_USER_PROFILE = 'ideas-network/profile/SET_USER_PROFILE';
+const SET_STATUS = 'ideas-network/profile/SET_STATUS';
 
 let initialState = {
     userProfile: null,
@@ -54,24 +53,21 @@ export const setUserProfile = (userProfile) => ({type: SET_USER_PROFILE, userPro
 export const setStatus = (userStatus) => ({type: SET_STATUS, userStatus});
 
 // Thunks
-export const getProfile = (userId) => (dispatch) => {
-    profileAPI.getProfile(userId).then(data => {
-        dispatch(setUserProfile(data));
-    });
+export const getProfile = (userId) => async (dispatch) => {
+    let response = await profileAPI.getProfile(userId);
+    dispatch(setUserProfile(response));
 };
 
-export const getStatus = (userId) => (dispatch) => {
-    profileAPI.getStatus(userId).then(userStatus => {
-        dispatch(setStatus(userStatus));
-    });
+export const getStatus = (userId) => async (dispatch) => {
+    let response = await profileAPI.getStatus(userId);
+    dispatch(setStatus(response));
 };
 
-export const updateStatus = (newStatus) => (dispatch) => {
-    profileAPI.updateStatus(newStatus).then(data => {
-        if (data.resultCode === 0){
-            dispatch(setStatus(newStatus));
-        }
-    });
+export const updateStatus = (newStatus) => async (dispatch) => {
+    let response = await profileAPI.updateStatus(newStatus);
+    if (response.resultCode === 0) {
+        dispatch(setStatus(newStatus));
+    }
 };
 
 export default profileReducer;

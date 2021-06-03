@@ -2,17 +2,17 @@ import LoginForm from './LoginForm';
 import {Redirect} from 'react-router-dom';
 import styles from './Login.module.css';
 
-const Login = props => {
+const Login = ({logInUser, isAuth, errors}) => {
     const onSubmitLogin = (values) => {
-        props.logInUser(values.email, values.password, values.rememberMe);
+        logInUser(values.email, values.password, values.rememberMe);
     };
 
-    if (props.isAuth) return <Redirect to='/profile'/>
+    if (isAuth) return <Redirect to='/profile'/>
 
     return (
         <div className={styles.Login}>
             <h2>Login</h2>
-            <LoginForm onSubmitLogin={onSubmitLogin} errors={props.errors}/>
+            <LoginForm onSubmitLogin={onSubmitLogin} errors={errors}/>
         </div>
     )
 };
