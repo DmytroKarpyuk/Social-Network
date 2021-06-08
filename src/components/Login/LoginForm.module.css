@@ -1,26 +1,4 @@
 .LoginForm input, textarea {
     padding: 10px 25px;
     margin-bottom: 15px;
-    border-radius: 5px;
-    border: 1px solid #484c58;
-    transition: .2s;
-}
-
-button {
-    padding: 10px 15px;
-    background: #f5c953;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: .2s;
-}
-
-button:hover {
-    background: #e7b748;
-}
-
-.error {
-    color: red;
-    font-weight: bold;
-    margin-bottom: 15px;
 }

@@ -11,8 +11,8 @@ const TOGGLE_IS_FOLLOWING_PROGRESS = 'ideas-network/users/TOGGLE_IS_FOLLOWING_PR
 
 let initialState = {
     users: [],
-    pageSize: 5,
-    totalUsersCount: 0,
+    pageSize: 7,
+    totalItemsCount: 0,
     currentPage: 1,
     isFetching: false,
     isFollowingInProgress: []
@@ -43,7 +43,7 @@ const usersReducer = (state = initialState, action) => {
         case SET_TOTAL_USERS_COUNT:
             return {
                 ...state,
-                totalUsersCount: action.totalCount
+                totalItemsCount: action.totalCount
             }
         case TOGGLE_IS_FETCHING:
             return {

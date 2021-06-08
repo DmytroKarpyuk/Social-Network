@@ -15,11 +15,13 @@ const Dialogs = (props) => {
 
     return (
         <div className={styles.Dialogs}>
-            <div className={styles.dialogs_list}>
+            <div>
                 {dialogsElements}
             </div>
-            <div className={styles.messages}>
-                <div>{messagesElements}</div>
+            <div>
+                <div className={styles.messages}>
+                    {messagesElements}
+                </div>
                 <div>
                     <DialogForm addNewMessage={addNewMessage}/>
                 </div>

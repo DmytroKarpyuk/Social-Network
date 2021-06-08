@@ -1,31 +1,11 @@
-.NewPostForm {
-    background: #cecece;
-    padding: 15px;
-}
-
-.NewPostForm textarea {
-    padding: 15px;
-    margin: 0 15px 15px 0;
-    border-radius: 10px;
-    width: 50%;
-    outline: none;
-    transition: .2s;
-}
-
-.NewPostForm textarea:focus {
-    border: 1px solid #000000;
-}
-
-.NewPostForm button {
-    background: #89f1c4;
-    border: none;
-    border-radius: 5px;
+.addpost_btn {
+    background: #c2ecd9;
+    border: 1px solid black;
     outline: none;
     cursor: pointer;
     padding: 15px 20px;
-    transition: .2s;
 }
 
-.NewPostForm button:hover {
-    background: #74d9ac;
+.addpost_btn:hover {
+    background: #b4eac8;
 }

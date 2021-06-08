@@ -1,14 +1,5 @@
-.profile_info {
-    padding: 15px;
-    background: #fae7c0;
-    border: 3px solid orange;
-    border-top: none;
-}
-
 .profile_img {
     height: 150px;
     width: 150px;
     border-radius: 75px;
-    margin-right: 15px;
-    object-fit: cover;
 }

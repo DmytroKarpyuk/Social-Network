@@ -3,10 +3,12 @@ import HeaderContainer from "./components/Header/HeaderContainer";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Content from "./components/Content/Content";
 import './App.css';
-import {connect} from "react-redux";
+import {connect, Provider} from "react-redux";
 import {initializeApp} from "./redux/reducers/app-reducer";
 import {compose} from "redux";
 import Preloader from "./components/common/Preloader/Preloader";
+import store from "./redux/store/redux-store";
+import {BrowserRouter} from "react-router-dom";
 
 class App extends React.Component {
     componentDidMount() {
@@ -32,6 +34,18 @@ const mapStateToProps = (state) => ({
     initialized: state.app.initialized
 })
 
-export default compose(
+let AppContainer = compose(
     connect(mapStateToProps, {initializeApp})
 )(App);
+
+const SocialNetworkApp = props => {
+    return (
+        <BrowserRouter>
+            <Provider store={store}>
+                <AppContainer/>
+            </Provider>
+        </BrowserRouter>
+    )
+};
+
+export default SocialNetworkApp;

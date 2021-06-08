@@ -1,4 +1,4 @@
-import { getAuthUserData } from "./auth-reducer";
+import {getAuthUserData} from "./auth-reducer";
 
 const INITIALIZED_SUCCESS = 'ideas-network/app/INITIALIZED_SUCCESS';
 
@@ -18,7 +18,7 @@ const appReducer = (state = initialState, action) => {
     }
 };
 
-export const initializedSuccess = () => ({ type: INITIALIZED_SUCCESS });
+export const initializedSuccess = () => ({type: INITIALIZED_SUCCESS});
 
 // Thunk creators
 export const initializeApp = () => (dispatch) => {
@@ -26,7 +26,6 @@ export const initializeApp = () => (dispatch) => {
     Promise.all([promise]).then(() => {
         dispatch(initializedSuccess());
     })
-
 };
 
 export default appReducer;

@@ -19,7 +19,7 @@ const NewPostForm = props => {
                     <Form>
                         <FieldElement name='newPostBody' component='textarea' placeholder='Enter your post text'/>
                         <div>
-                            <button type='submit'>Add idea 💡</button>
+                            <button type='submit' className={styles.addpost_btn}>Add idea 💡</button>
                         </div>
                     </Form>
                 </div>

@@ -1,0 +1,25 @@
+.user {
+    margin-bottom: 20px;
+    margin-right: 20px;
+}
+
+.user_photo {
+    height: 80px;
+    width: 80px;
+    border-radius: 50px;
+    margin-right: 15px;
+    object-fit: cover;
+}
+
+.follow_btn {
+    background: #e5cd84 !important;
+    color: #000000 !important;
+    border: none !important;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.follow_btn:hover {
+    background: #dcbf7c !important;
+    color: #000000 !important;
+}

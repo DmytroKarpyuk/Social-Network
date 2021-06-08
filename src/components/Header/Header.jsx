@@ -11,11 +11,14 @@ const Header = props => {
             <NavLink to='/home'>
                 <img src={logo} alt='...'/>
             </NavLink>
-            <p>{appName.toUpperCase()}</p>
+            <h3>{appName.toUpperCase()}</h3>
             <div className={styles.login_block}>
-                {props.isAuth
-                    ? <div>{props.login.toUpperCase()}<button onClick={props.logOutUser}>Log Out</button></div>
-                    : <NavLink to='/login'>Login</NavLink>
+                {
+                    props.isAuth
+                        ? <div>{props.login.toUpperCase()}
+                            <button onClick={props.logOutUser}>Log Out</button>
+                        </div>
+                        : <NavLink to='/login'>Login</NavLink>
                 }
             </div>
         </header>

@@ -2,6 +2,7 @@ import {Form, Formik} from "formik";
 import React from "react";
 import * as Yup from "yup";
 import FieldElement from "../../common/Fields/FieldElement";
+import styles from './Dialogs.module.css';
 
 const DialogForm = props => {
     const validate = Yup.object({
@@ -12,7 +13,9 @@ const DialogForm = props => {
         <Formik initialValues={{newMessageBody: ''}} onSubmit={props.addNewMessage} validationSchema={validate}>
             <Form>
                 <FieldElement name='newMessageBody' component='textarea' placeholder='Enter your message text'/>
-                <button type='submit'>Send</button>
+                <div>
+                    <button className={styles.send_btn} type='submit'>Send</button>
+                </div>
             </Form>
         </Formik>
     )

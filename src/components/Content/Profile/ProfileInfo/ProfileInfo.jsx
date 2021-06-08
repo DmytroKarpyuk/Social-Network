@@ -2,8 +2,7 @@ import React from 'react';
 import Preloader from "../../../common/Preloader/Preloader";
 import styles from './ProfileInfo.module.css';
 import userPhoto from '../../../../assets/images/user_photo.png';
-// import ProfileStatus from './ProfileStatus';
-import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
+import ProfileStatus from './ProfileStatus';
 
 const ProfileInfo = props => {
     if (!props.userProfile) {
@@ -21,7 +20,7 @@ const ProfileInfo = props => {
         <div className={styles.profile_info}>
             <img src={props.userProfile.photos.large || userPhoto} className={styles.profile_img} alt='...'/>
             <h3>{props.userProfile.fullName.toUpperCase()}</h3>
-            <ProfileStatusWithHooks userStatus={props.userStatus} updateStatus={props.updateStatus}/>
+            <ProfileStatus userStatus={props.userStatus} updateStatus={props.updateStatus}/>
             {props.userProfile.aboutMe ? <p><b>About me: </b> {props.userProfile.aboutMe}</p> : null}
             {isHasProperties(props.userProfile.contacts)
                 ? <p>Contacts:</p>

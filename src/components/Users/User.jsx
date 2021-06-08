@@ -1,4 +1,4 @@
-import styles from "./Users.module.css";
+import styles from "./User.module.css";
 import {NavLink} from "react-router-dom";
 import userPhoto from "../../assets/images/user_photo.png";
 import React from "react";
