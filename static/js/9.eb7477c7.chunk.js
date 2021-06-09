@@ -1,0 +1,2 @@
+(this["webpackJsonpideas-network"]=this["webpackJsonpideas-network"]||[]).push([[9],{262:function(t,n,e){},268:function(t,n,e){"use strict";e.r(n);e(0);var s=e(262),i=e.n(s),a=e(1);n.default=function(){return Object(a.jsx)("div",{className:i.a.Settings,children:"Settings"})}}}]);
+//# sourceMappingURL=9.eb7477c7.chunk.js.map

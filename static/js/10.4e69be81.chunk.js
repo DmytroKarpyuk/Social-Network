@@ -1,0 +1,2 @@
+(this["webpackJsonpideas-network"]=this["webpackJsonpideas-network"]||[]).push([[10],{266:function(e,t,s){"use strict";s.r(t);s(0);var c=s(1);t.default=function(e){return Object(c.jsx)("div",{children:Object(c.jsx)("h2",{children:"React Redux Test Project"})})}}}]);
+//# sourceMappingURL=10.4e69be81.chunk.js.map
