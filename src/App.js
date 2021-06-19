@@ -38,7 +38,8 @@ let AppContainer = compose(
     connect(mapStateToProps, {initializeApp})
 )(App);
 
-const SocialNetworkApp = props => {
+const SocialNetworkApp = () => {
+    // basename={process.env.PUBLIC_URL} | HashRouter
     return (
         <BrowserRouter>
             <Provider store={store}>

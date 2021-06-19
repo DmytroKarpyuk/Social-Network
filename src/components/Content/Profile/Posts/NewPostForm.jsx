@@ -15,11 +15,11 @@ const NewPostForm = props => {
         <Formik initialValues={{newPostBody: ''}} onSubmit={props.addNewPost} validationSchema={validate}>
             {() => (
                 <div className={styles.NewPostForm}>
-                    <h2>Create idea</h2>
+                    <h2>Create idea 💡</h2>
                     <Form>
                         <FieldElement name='newPostBody' component='textarea' placeholder='Enter your post text'/>
                         <div>
-                            <button type='submit' className={styles.addpost_btn}>Add idea 💡</button>
+                            <button type='submit' className={styles.addpost_btn}>Add idea</button>
                         </div>
                     </Form>
                 </div>

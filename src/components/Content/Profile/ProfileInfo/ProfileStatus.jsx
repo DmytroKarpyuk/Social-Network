@@ -14,6 +14,12 @@ class ProfileStatus extends React.Component {
         }
     }
 
+    onStatusChange = (e) => {
+        this.setState({
+            status: e.currentTarget.value
+        });
+    }
+
     enableEditMode = () => {
         this.setState({
             editMode: true
@@ -25,12 +31,6 @@ class ProfileStatus extends React.Component {
             editMode: false
         });
         this.props.updateStatus(this.state.status);
-    }
-
-    onStatusChange = (e) => {
-        this.setState({
-            status: e.currentTarget.value
-        });
     }
 
     render() {

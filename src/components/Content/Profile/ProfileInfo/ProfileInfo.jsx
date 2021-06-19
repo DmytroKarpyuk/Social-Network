@@ -1,43 +1,74 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Preloader from "../../../common/Preloader/Preloader";
 import styles from './ProfileInfo.module.css';
 import userPhoto from '../../../../assets/images/user_photo.png';
 import ProfileStatus from './ProfileStatus';
+import ProfileDataForm from "./ProfileDataForm";
 
 const ProfileInfo = props => {
-    if (!props.userProfile) {
+
+    let [editMode, setEditMode] = useState(false);
+
+    if (!props.profile) {
         return <Preloader/>
     }
-    const isHasProperties = (obj) => {
-        for (var key in obj) {
-            if (obj[key] !== null && obj[key] !== "") {
-                return true;
-            }
+
+    const onMainPhotoSelected = (e) => {
+        if (e.target.files.length) {
+            props.savePhoto(e.target.files[0]);
         }
-        return false;
-    }
+    };
+
+    const onSubmitForm = (formData) => {
+        props.saveProfile(formData);
+        console.log('Inside comp:', props.errors);
+        if (props.errors.length === 0) {
+            setEditMode(false);
+        }
+    };
+
     return (
-        <div className={styles.profile_info}>
-            <img src={props.userProfile.photos.large || userPhoto} className={styles.profile_img} alt='...'/>
-            <h3>{props.userProfile.fullName.toUpperCase()}</h3>
-            <ProfileStatus userStatus={props.userStatus} updateStatus={props.updateStatus}/>
-            {props.userProfile.aboutMe ? <p><b>About me: </b> {props.userProfile.aboutMe}</p> : null}
-            {isHasProperties(props.userProfile.contacts)
-                ? <p>Contacts:</p>
-                : null
+        <div>
+            <img src={props.profile.photos.large || userPhoto} className={styles.profile_img} alt='...'/>
+            {props.isOwner && <input type='file' onChange={onMainPhotoSelected}/>}
+            {editMode
+                ? <ProfileDataForm profile={props.profile} onSubmitForm={onSubmitForm} errors={props.errors}/>
+                : <ProfileData profile={props.profile}
+                               isOwner={props.isOwner}
+                               userStatus={props.userStatus}
+                               updateStatus={props.updateStatus}
+                               activateEditMode={() => {
+                                   setEditMode(true)
+                               }}
+                />
             }
-            <ul>
-                {props.userProfile.contacts.facebook
-                    ? <li><a href={props.userProfile.contacts.facebook}>facebook</a></li>
-                    : null
-                }
-                {props.userProfile.contacts.instagram
-                    ? <li><a href={props.userProfile.contacts.instagram}>instagram</a></li>
-                    : null
-                }
-            </ul>
         </div>
     )
+};
+
+const ProfileData = ({profile, isOwner, activateEditMode, userStatus, updateStatus}) => {
+    return (
+        <div>
+            <div><b>Full name: </b>{profile.fullName.toUpperCase()}</div>
+            <ProfileStatus userStatus={userStatus} updateStatus={updateStatus}/>
+            <div>{profile.aboutMe ? <p><b>About me: </b> {profile.aboutMe}</p> : null}</div>
+            <div><b>Looking for a job: </b>{profile.lookingForAJob ? 'Yes' : 'No'}</div>
+            <div>{profile.lookingForAJobDescription ? <p><b>Job description: </b> {profile.lookingForAJobDescription}</p> : null}</div>
+            <div>
+                <b>Contacts</b>: {Object.keys(profile.contacts)
+                .map(key => {
+                    return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]}/>
+                })}
+            </div>
+            {isOwner && <div>
+                <button onClick={activateEditMode}>Edit</button>
+            </div>}
+        </div>
+    )
+};
+
+const Contact = ({contactTitle, contactValue}) => {
+    return <div className={styles.contact}><b>{contactTitle}</b>: {contactValue}</div>
 };
 
 export default ProfileInfo;

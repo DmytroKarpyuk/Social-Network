@@ -3,3 +3,13 @@
     width: 150px;
     border-radius: 75px;
 }
+
+.contact {
+    padding-left: 15px;
+}
+
+.error {
+    padding: 5px;
+    color: #ff0000;
+    border: 1px solid #ff0000;
+}

@@ -6,8 +6,15 @@ import styles from './Profile.module.css';
 const Profile = props => {
     return (
         <div className={styles.Profile}>
-            <ProfileInfo userProfile={props.userProfile} userStatus={props.userStatus} updateStatus={props.updateStatus}/>
-            <hr/>
+            <ProfileInfo profile={props.profile}
+                         userStatus={props.userStatus}
+                         updateStatus={props.updateStatus}
+                         isOwner={props.isOwner}
+                         savePhoto={props.savePhoto}
+                         saveProfile={props.saveProfile}
+                         errors={props.errors}
+            />
+            <hr className={styles.hr}/>
             <PostsContainer/>
         </div>
     )
