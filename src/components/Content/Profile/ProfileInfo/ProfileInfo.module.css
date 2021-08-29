@@ -2,6 +2,14 @@
     height: 150px;
     width: 150px;
     border-radius: 75px;
-    margin-right: 15px;
-    object-fit: cover;
+}
+
+.contact {
+    padding-left: 15px;
+}
+
+.error {
+    padding: 5px;
+    color: #ff0000;
+    border: 1px solid #ff0000;
 }

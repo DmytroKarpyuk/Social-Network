@@ -1,0 +1,11 @@
+.addpost_btn {
+    background: #c2ecd9;
+    border: 1px solid black;
+    outline: none;
+    cursor: pointer;
+    padding: 15px 20px;
+}
+
+.addpost_btn:hover {
+    background: #b4eac8;
+}

@@ -1,0 +1,27 @@
+.paginator {
+    margin-bottom: 35px;
+}
+
+.paginator span {
+    border: 1px solid #a8a8a8;
+    cursor: pointer;
+    margin: 0 2px;
+    padding: 0 3px;
+}
+
+.page_active {
+    background: #afafaf;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.control_btn {
+    background: #afafaf;
+    margin: 0 10px;
+    padding: 5px 10px;
+    border: 1px solid black;
+}
+
+.control_btn:hover {
+    background: #a3a3a3;
+}

@@ -1,0 +1,11 @@
+.Profile {
+    display: grid;
+    grid-template-areas: 'ProfileInfo' 'PostsContainer';
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+}
+
+hr {
+    width: 100%;
+    border-top: 1px solid #747474 !important;
+}

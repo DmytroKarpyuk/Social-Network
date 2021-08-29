@@ -1,12 +1,7 @@
-.user_photo {
-    height: 80px;
-    width: 80px;
-    border-radius: 50px;
-    margin-right: 15px;
-    object-fit: cover;
+.Users {
+    display: flex;
 }
 
-.page_active {
-    font-weight: bold;
-    color: #e56800;
+.searchingForm {
+    margin-bottom: 25px;
 }

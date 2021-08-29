@@ -1,5 +1,18 @@
 .Dialogs {
     display: grid;
     grid-template-columns: 2fr 10fr;
-    background: #a3b3bd;
+}
+
+.send_btn {
+    padding: 10px 25px;
+    cursor: pointer;
+    border: 1px solid #6c6c6c;
+}
+
+.send_btn:hover {
+    background: #cbcbcb;
+}
+
+.messages {
+    margin-bottom: 15px;
 }
