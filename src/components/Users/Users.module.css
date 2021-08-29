@@ -1,3 +1,7 @@
 .Users {
     display: flex;
 }
+
+.searchingForm {
+    margin-bottom: 25px;
+}
