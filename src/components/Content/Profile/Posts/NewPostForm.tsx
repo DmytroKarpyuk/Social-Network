@@ -30,7 +30,7 @@ const NewPostForm: React.FC<PropsType> = (props) => {
                     <Form>
                         <FieldElement name='newPostText' component='textarea' placeholder='Enter your post text'/>
                         <div>
-                            <button type='submit' className={styles.addpost_btn}>Add idea</button>
+                            <button type='submit' className='ant-btn ant-btn-primary'>Add idea</button>
                         </div>
                     </Form>
                 </div>

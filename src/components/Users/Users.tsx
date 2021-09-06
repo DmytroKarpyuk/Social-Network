@@ -1,32 +1,81 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import User from './User';
 import Paginator from '../common/Paginator/Paginator';
 import styles from './Users.module.css';
-import {UserType} from '../../types/types';
-import {Form, Formik} from 'formik';
-import * as Yup from 'yup';
-import FieldElement from '../common/Fields/FieldElement';
+import {UsersSearchForm} from './UsersSearchForm';
+import {FilterType, requestUsers, follow, unFollow} from '../../redux/reducers/users-reducer';
+import {useDispatch, useSelector} from 'react-redux';
+import {
+    getCurrentPage,
+    getFollowingInProgress,
+    getPageSize,
+    getTotalItemsCount,
+    getUsers,
+    getUsersFilter
+} from '../../redux/selectors/users-selectors';
+import {useHistory} from 'react-router-dom';
+import * as queryString from 'querystring';
 
-type PropsType = {
-    totalItemsCount: number
-    pageSize: number
-    currentPage: number
-    onPageChanged: (pageNumber: number) => void
-    users: Array<UserType>
-    followingInProgress: Array<number>
-    follow: (userId: number) => void
-    unFollow: (userId: number) => void
-};
+export const Users: React.FC<PropsType> = () => {
 
-const Users: React.FC<PropsType> = ({currentPage, totalItemsCount, pageSize, onPageChanged, users, ...props}) => {
+    const followingInProgress = useSelector(getFollowingInProgress);
+    const totalItemsCount = useSelector(getTotalItemsCount);
+    const currentPage = useSelector(getCurrentPage);
+    const filter = useSelector(getUsersFilter);
+    const pageSize = useSelector(getPageSize);
+    const users = useSelector(getUsers);
+    const dispatch = useDispatch();
+    const history = useHistory();
+
+    useEffect(() => {
+        const parsed = queryString.parse(history.location.search.substr(1)) as QueryParamsType;
+        let actualPage = currentPage;
+        let actualFilter = filter;
+
+        if (parsed.page) actualPage = Number(parsed.page);
+        if (parsed.term) actualFilter = {...actualFilter, term: parsed.term as string};
+        if (parsed.friend) actualFilter = {...actualFilter, friend: parsed.friend === 'null' ? null : parsed.friend === 'true'};
+
+        dispatch(requestUsers(actualPage, pageSize, actualFilter));
+
+        console.log('actualPage, pageSize, actualFilter', actualPage, pageSize, actualFilter);
+    }, []);
+
+    useEffect(() => {
+        const query: QueryParamsType = {};
+        if(filter.term) query.term = filter.term;
+        if(filter.friend !== null) query.friend = String(filter.friend);
+        if(currentPage !== 1) query.page = String(currentPage);
+
+        history.push({
+            pathname: '/users',
+            search: queryString.stringify(query)
+        });
+    }, [filter, currentPage]);
+
+    const onPageChanged = (pageNumber: number) => {
+        dispatch(requestUsers(pageNumber, pageSize, filter));
+    };
+
+    const onFilterChanged = (filter: FilterType) => {
+        dispatch(requestUsers(1, pageSize, filter));
+    };
+
+    const startFollow = (userId: number) => {
+        dispatch(follow(userId));
+    };
+
+    const stopFollow = (userId: number) => {
+        dispatch(unFollow(userId));
+    };
+
     return (
         <>
-            <UsersSearchForm/>
+            <UsersSearchForm onFilterChanged={onFilterChanged}/>
             <div className={styles.Users}>
                 {
-                    users.map(u => <User user={u} key={u.id} followingInProgress={props.followingInProgress}
-                                         follow={props.follow}
-                                         unFollow={props.unFollow}/>
+                    users.map(u => <User user={u} key={u.id} followingInProgress={followingInProgress}
+                                         follow={startFollow} unFollow={stopFollow}/>
                     )
                 }
             </div>
@@ -37,30 +86,5 @@ const Users: React.FC<PropsType> = ({currentPage, totalItemsCount, pageSize, onP
     );
 };
 
-const UsersSearchForm = () => {
-    const initialValues = {term: ''};
-    const validationSchema = Yup.object({
-        term: Yup.string().max(20, 'Searching name is too long')
-    });
-    const onSubmit = (values: any) => {
-        console.log(values);
-    };
-
-    return (
-        <div className={styles.searchingForm}>
-            <h1>Friend`s searching form</h1>
-            <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
-                {
-                    () => (
-                        <Form>
-                            <FieldElement name='term' component='input' placeholder='Type a name'/>
-                            <button type='submit'>Search</button>
-                        </Form>
-                    )
-                }
-            </Formik>
-        </div>
-    );
-};
-
-export default Users;
+type PropsType = {};
+type QueryParamsType = { term?: string, page?: string, friend?: string };

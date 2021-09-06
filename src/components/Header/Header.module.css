@@ -1,15 +1,19 @@
 .Header {
     background: #000000;
     position: fixed;
+    z-index: 100;
     width: 100%;
     min-height: 55px;
     display: flex;
     flex-direction: row;
     align-items: center;
     padding: 0 15px;
-    color: white;
     font-weight: bold;
     grid-area: Header;
+}
+
+.Header h3 {
+    color: white;
 }
 
 .Header img {

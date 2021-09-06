@@ -9,6 +9,7 @@ import {compose} from 'redux';
 import Preloader from './components/common/Preloader/Preloader';
 import store, {AppStateType} from './redux/store/redux-store';
 import {BrowserRouter, withRouter} from 'react-router-dom';
+import 'antd/dist/antd.css';
 
 type MapPropsType = ReturnType<typeof mapStateToProps>
 type DispatchPropsType = {

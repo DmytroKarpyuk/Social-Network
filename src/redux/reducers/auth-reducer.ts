@@ -44,7 +44,7 @@ export const actions = {
     setErrors: (errors: Array<string>) => ({type: SET_ERRORS, errors} as const)
 };
 
-// Thunks
+// Thunk Get auth user data
 export const getAuthUserData = (): ThunkType => {
     return async (dispatch) => {
         const data = await authAPI.getMe();
@@ -56,6 +56,7 @@ export const getAuthUserData = (): ThunkType => {
     };
 };
 
+// Thunk Log in user
 export const logInUser = (email: string, password: string, rememberMe: boolean, captcha: string): ThunkType => {
     return async (dispatch) => {
         const data = await authAPI.logIn(email, password, rememberMe, captcha);
@@ -71,6 +72,7 @@ export const logInUser = (email: string, password: string, rememberMe: boolean, 
     };
 };
 
+// Thunk Log out user
 export const logOutUser = (): ThunkType => {
     return async (dispatch) => {
         const data = await authAPI.logOut();
@@ -80,6 +82,7 @@ export const logOutUser = (): ThunkType => {
     };
 };
 
+// Thunk Get captcha url
 export const getCaptchaUrl = (): ThunkType => {
     return async (dispatch) => {
         const data = await securityAPI.getCaptchaUrl();

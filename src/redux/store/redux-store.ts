@@ -5,7 +5,9 @@ import profileReducer from '../reducers/profile-reducer';
 import dialogsReducer from '../reducers/dialogs-reducer';
 import sidebarReducer from '../reducers/sidebar-reducer';
 import usersReducer from '../reducers/users-reducer';
+import chatReducer from '../reducers/chat-reducer';
 import thunkMiddleWare, {ThunkAction} from 'redux-thunk';
+import {composeWithDevTools} from 'redux-devtools-extension';
 
 
 const rootReducer = combineReducers({
@@ -14,10 +16,14 @@ const rootReducer = combineReducers({
     profilePage: profileReducer,
     dialogsPage: dialogsReducer,
     sidebar: sidebarReducer,
-    usersPage: usersReducer
+    usersPage: usersReducer,
+    chat: chatReducer
 });
 
-const store = createStore(rootReducer, applyMiddleware(thunkMiddleWare));
+const store = createStore(
+    rootReducer,
+    composeWithDevTools(applyMiddleware(thunkMiddleWare))
+);
 
 export default store;
 

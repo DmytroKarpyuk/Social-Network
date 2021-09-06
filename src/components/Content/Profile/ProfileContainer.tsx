@@ -8,20 +8,6 @@ import {compose} from 'redux';
 import {AppStateType} from '../../../redux/store/redux-store';
 import {ProfileType} from '../../../types/types';
 
-type MapPropsType = ReturnType<typeof mapStateToProps>
-type DispatchPropsType = {
-    getProfile: (userId: number) => void
-    getStatus: (userId: number) => void
-    updateStatus: (newStatus: string) => void
-    savePhoto: (file: File) => void
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    saveProfile: (profile: ProfileType) => Promise<any>
-}
-type PathParamsType = {
-    userId: string
-}
-type PropsType = MapPropsType & DispatchPropsType & RouteComponentProps<PathParamsType>;
-
 class ProfileContainer extends React.Component<PropsType> {
 
     refreshProfile() {
@@ -80,3 +66,17 @@ export default compose<React.ComponentType>(
     withRouter,
     withAuthRedirect
 )(ProfileContainer);
+
+type MapPropsType = ReturnType<typeof mapStateToProps>
+type DispatchPropsType = {
+    getProfile: (userId: number) => void
+    getStatus: (userId: number) => void
+    updateStatus: (newStatus: string) => void
+    savePhoto: (file: File) => void
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    saveProfile: (profile: ProfileType) => Promise<any>
+}
+type PathParamsType = {
+    userId: string
+}
+type PropsType = MapPropsType & DispatchPropsType & RouteComponentProps<PathParamsType>;

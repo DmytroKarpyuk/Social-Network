@@ -3,7 +3,7 @@ import React from 'react';
 const Home: React.FC = () => {
     return (
         <div>
-            <h2>React Redux Test Project</h2>
+            <h2>Test project in <b>React, Redux, TypeScript, Ant Design</b></h2>
         </div>
     );
 };

@@ -5,6 +5,7 @@ import userPhoto from '../../../../assets/images/user_photo.png';
 import ProfileStatus from './ProfileStatus';
 import ProfileDataForm from './ProfileDataForm';
 import {ContactsType, ProfileType} from '../../../../types/types';
+import {Button} from 'antd';
 
 type PropsType = {
     profile: ProfileType | null
@@ -80,7 +81,7 @@ const ProfileData: React.FC<ProfileDataPropsType> = ({profile, isOwner, activate
                 })}
             </div>
             {isOwner && <div>
-                <button onClick={activateEditMode}>Edit</button>
+                <Button type="primary" onClick={activateEditMode}>Edit</Button>
             </div>}
         </div>
     );

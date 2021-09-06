@@ -18,6 +18,9 @@ const Sidebar: React.FC = () => {
                 <NavLink to='/users' activeClassName={styles.active}>Users</NavLink>
             </div>
             <div>
+                <NavLink to='/chat' activeClassName={styles.active}>Chat</NavLink>
+            </div>
+            <div>
                 <NavLink to='/news' activeClassName={styles.active}>News</NavLink>
             </div>
             <div>
