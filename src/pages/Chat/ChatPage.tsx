@@ -1,21 +1,22 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {Form, Formik} from 'formik';
+import React, { useEffect, useRef, useState } from 'react';
+import { Form, Formik } from 'formik';
 import FieldElement from '../../components/common/Fields/FieldElement';
 import * as Yup from 'yup';
-import {Avatar} from 'antd';
-import {ChatMessageType} from '../../api/chat-api';
-import {useDispatch, useSelector} from 'react-redux';
-import {sendMessage, startMessagesListening, stopMessagesListening} from '../../redux/reducers/chat-reducer';
-import {AppStateType} from '../../redux/store/redux-store';
-import {Redirect} from 'react-router-dom';
+import { Avatar } from 'antd';
+import { ChatMessageType } from '../../api/chat-api';
+import { useDispatch, useSelector } from 'react-redux';
+import { sendMessage, startMessagesListening, stopMessagesListening } from '../../redux/reducers/chat-reducer';
+import { AppStateType } from '../../redux/store/redux-store';
+import { Redirect } from 'react-router-dom';
+import Preloader from '../../components/common/Preloader/Preloader';
 
 const ChatPage: React.FC = () => {
     const isAuth = useSelector((state: AppStateType) => state.auth.isAuth);
 
-    if (!isAuth) return <Redirect to='/login'/>;
+    if (!isAuth) return <Redirect to='/login' />;
 
     return (
-        <Chat/>
+        <Chat />
     );
 };
 
@@ -35,8 +36,8 @@ const Chat: React.FC = () => {
             {status === 'error' && <div>Some error occured. Please refresh the page</div>}
             <>
                 <h1>Chat Surf</h1>
-                <Messages/>
-                <AddMessageForm/>
+                {status !== 'ready' ? <Preloader /> : <Messages />}
+                <AddMessageForm />
             </>
         </div>
     );
@@ -58,28 +59,28 @@ const Messages: React.FC = () => {
 
     useEffect(() => {
         if (isAutoScrollI) {
-            messagesAnchorRef.current?.scrollIntoView({behavior: 'smooth'});
+            messagesAnchorRef.current?.scrollIntoView({ behavior: 'smooth' });
         }
     }, [messages]);
 
     return (
-        <div style={{height: '400px', overflow: 'auto'}} onScroll={scrollHandler}>
+        <div style={{ height: '400px', overflow: 'auto' }} onScroll={scrollHandler}>
             <h2>Messages</h2>
             {
-                messages.map((m, index) => <Message message={m} key={index}/>)
+                messages.map((m, index) => <Message message={m} key={index} />)
             }
             <div ref={messagesAnchorRef}>=)</div>
         </div>
     );
 };
 
-const Message: React.FC<{ message: ChatMessageType }> = ({message}) => {
+const Message: React.FC<{ message: ChatMessageType }> = ({ message }) => {
     return (
         <div>
-            <Avatar size={32} src={message.photo}/><b>{message.userName}</b>
-            <br/>
+            <Avatar size={32} src={message.photo} /><b>{message.userName}</b>
+            <br />
             <p>{message.message}</p>
-            <hr/>
+            <hr />
         </div>
     );
 };
@@ -104,7 +105,7 @@ const AddMessageForm: React.FC = () => {
             AddMessageForm
             <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
                 <Form>
-                    <FieldElement name='message' component='textarea'/>
+                    <FieldElement name='message' component='textarea' />
                     <div>
                         <button type='submit' disabled={status !== 'ready'}>Send</button>
                     </div>

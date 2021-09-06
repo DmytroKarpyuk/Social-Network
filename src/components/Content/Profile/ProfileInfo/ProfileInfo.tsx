@@ -1,11 +1,11 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import Preloader from '../../../common/Preloader/Preloader';
 import styles from './ProfileInfo.module.css';
 import userPhoto from '../../../../assets/images/user_photo.png';
 import ProfileStatus from './ProfileStatus';
 import ProfileDataForm from './ProfileDataForm';
-import {ContactsType, ProfileType} from '../../../../types/types';
-import {Button} from 'antd';
+import { ContactsType, ProfileType } from '../../../../types/types';
+import { Button } from 'antd';
 
 type PropsType = {
     profile: ProfileType | null
@@ -23,7 +23,7 @@ const ProfileInfo: React.FC<PropsType> = props => {
     const [editMode, setEditMode] = useState(false);
 
     if (!props.profile) {
-        return <Preloader/>;
+        return <Preloader />;
     }
 
     const onMainPhotoSelected = (e: ChangeEvent<HTMLInputElement>) => {
@@ -39,17 +39,17 @@ const ProfileInfo: React.FC<PropsType> = props => {
 
     return (
         <div>
-            <img src={props.profile.photos.large || userPhoto} className={styles.profile_img} alt='...'/>
-            {props.isOwner && <input type='file' onChange={onMainPhotoSelected}/>}
+            <img src={props.profile.photos.large || userPhoto} className={styles.profile_img} alt='...' />
+            {props.isOwner && <input type='file' onChange={onMainPhotoSelected} />}
             {editMode
-                ? <ProfileDataForm profile={props.profile} onSubmitForm={onSubmitForm} errors={props.errors}/>
+                ? <ProfileDataForm profile={props.profile} onSubmitForm={onSubmitForm} errors={props.errors} />
                 : <ProfileData profile={props.profile}
-                               isOwner={props.isOwner}
-                               userStatus={props.userStatus}
-                               updateStatus={props.updateStatus}
-                               activateEditMode={() => {
-                                   setEditMode(true);
-                               }}
+                    isOwner={props.isOwner}
+                    userStatus={props.userStatus}
+                    updateStatus={props.updateStatus}
+                    activateEditMode={() => {
+                        setEditMode(true);
+                    }}
                 />
             }
         </div>
@@ -64,21 +64,21 @@ type ProfileDataPropsType = {
     activateEditMode: () => void
 }
 
-const ProfileData: React.FC<ProfileDataPropsType> = ({profile, isOwner, activateEditMode, userStatus, updateStatus}) => {
+const ProfileData: React.FC<ProfileDataPropsType> = ({ profile, isOwner, activateEditMode, userStatus, updateStatus }) => {
     return (
         <div>
             <div><b>Full name: </b>{profile.fullName.toUpperCase()}</div>
-            <ProfileStatus status={userStatus} updateStatus={updateStatus}/>
+            <ProfileStatus status={userStatus} updateStatus={updateStatus} />
             <div>{profile.aboutMe ? <p><b>About me: </b> {profile.aboutMe}</p> : null}</div>
             <div><b>Looking for a job: </b>{profile.lookingForAJob ? 'Yes' : 'No'}</div>
             <div>{profile.lookingForAJobDescription ? <p><b>Job description: </b> {profile.lookingForAJobDescription}</p> : null}</div>
             <div>
                 <b>Contacts</b>: {Object.keys(profile.contacts)
-                .map((key) => {
-                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                    // @ts-ignore
-                    return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key as keyof ContactsType]}/>;
-                })}
+                    .map((key) => {
+                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                        // @ts-ignore
+                        return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key as keyof ContactsType]} />;
+                    })}
             </div>
             {isOwner && <div>
                 <Button type="primary" onClick={activateEditMode}>Edit</Button>
@@ -92,7 +92,7 @@ type ContactsPropsType = {
     contactValue: string
 }
 
-const Contact: React.FC<ContactsPropsType> = ({contactTitle, contactValue}) => {
+const Contact: React.FC<ContactsPropsType> = ({ contactTitle, contactValue }) => {
     return <div className={styles.contact}><b>{contactTitle}</b>: {contactValue}</div>;
 };
 
