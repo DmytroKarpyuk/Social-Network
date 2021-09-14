@@ -1,6 +1,6 @@
 ## Social-Network (React-Redux)
 
-Social-Network with React and Redux
+Social-Network with React and Redux using SamuraiJS Social Network API documentation (https://social-network.samuraijs.com/docs)
 
 ##### In the project directory, you can run:
 
